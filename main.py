@@ -1,32 +1,28 @@
-from epuletek import *
+from eredmenyek import *
+import math
 
-beolvas('legmagasabb.txt')
-print(len(epuletek))
-print(f'A legmagasabb épület magassága: {legmagasabb()} méter')
-legmagasabb = legmagasabb_epulet()
-print(f'A legmagasabb épület:')
-print(f'\tNeve: {legmagasabb.nev}')
-print(f'\tMagasság: {legmagasabb.magassag}')
-print(f'\tEpült: {legmagasabb.epult}')
-print(f'\tOrszága: {legmagasabb.orszag}')
-print(f'\tVáros: {legmagasabb.varos}')
-print('---------------------------------------')
-legmagasabb_epulet_index = legmagasabb_epulet_index()
-print(f'\tNeve: {epuletek[legmagasabb_epulet_index].nev}')
-print(f'\tMagasság: {epuletek[legmagasabb_epulet_index].magassag}')
-print(f'\tEpült: {epuletek[legmagasabb_epulet_index].epult}')
-print(f'\tOrszága: {epuletek[legmagasabb_epulet_index].orszag}')
-print(f'\tVáros: {epuletek[legmagasabb_epulet_index].varos}')
-print('---------------------------------------')
-print('Legmagasabbak épületek:')
-for l in legmagasabbak():
-    print(f'\tneve: {l.nev}')
+betolt('ub2017egyeni.txt')
+print(f'3.2 feladat: Futók száma: {len(eredmenyek)}')
+print(f'3.3 feladat: Célba érkező női sportolók: {versenyzok_szama_celban("Noi")} fő')
+print('3.4 feladat: A leghosszabb nevű futó:')
+leghosszabb_nevu_futó = leghosszabb_nevu()
+print(f'\tNév: {leghosszabb_nevu_futó.Versenyzo}')
+print(f'\tRajtszám: {leghosszabb_nevu_futó.Rajtszam}')
+print(f'\tEredmény: {leghosszabb_nevu_futó.Versenyido}')
 
-print('---------------------------------------')
-legmagasabb_francia = legmagasabb_epulet_adott_orszagban('Franciaország')
-print('A legmagasabb francia épület:')
-print(f'\tNeve: {legmagasabb_francia.nev}')
-print(f'\tMagasság: {legmagasabb_francia.magassag}')
-print(f'\tEpült: {legmagasabb_francia.epult}')
-print(f'\tOrszága: {legmagasabb_francia.orszag}')
-print(f'\tVáros: {legmagasabb_francia.varos}')
+atlag = atlag_ido("Ferfi")
+ora = math.floor(atlag)
+perc = math.floor((atlag - ora) * 60)
+mperc = math.floor((((atlag - ora) * 60) - perc) * 60)
+
+atlag_mp = math.floor(atlag * 3600)
+print(f'3.5 feladat: Férfi sportolók átlagos ideje: {atlag} óra ({atlag_mp} mp.)')
+print(f'3.5 feladat: Férfi sportolók átlagos ideje: {ora}:{perc}:{mperc}')
+
+mperc = str(atlag_mp % 60).zfill(2)
+#perc = math.floor(atlag_mp / 60) % 60
+#perc = int(atlag_mp / 60) % 60
+perc = str((atlag_mp // 60) % 60).zfill(2)
+ora = str(atlag_mp // 3600).rjust(2, '0')
+
+print(f'{ora}:{perc}:{mperc}')
